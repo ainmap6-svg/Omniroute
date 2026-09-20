@@ -1,12 +1,15 @@
 # Railway: New Project -> Deploy from GitHub repo -> shu repo.
 # Keyin: Settings -> Volumes -> Add Volume -> mount path /data
-#        Settings -> Networking -> Generate Domain (port: 20128)
+#        Settings -> Networking -> Generate Domain (port: Railway bergan PORT, odatda 8080)
 [build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-# HTTP healthcheck yo'q: "/" login sahifasiga yo'naltiradi (302) va Railway
-# buni xato deb hisoblaydi. Konteyner ishlab tursa — deploy muvaffaqiyatli.
+# Birinchi deploy'da "/" healthcheck qolib ketgan edi (login'ga yo'naltiradi -> 302 -> FAILED).
+# Kalitni olib tashlash eski sozlamani bekor qilmaydi, shuning uchun aniq 200 qaytaradigan
+# statik faylga o'tkazamiz.
+healthcheckPath = "/favicon.ico"
+healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5
