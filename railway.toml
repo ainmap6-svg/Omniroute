@@ -8,8 +8,8 @@ dockerfilePath = "Dockerfile"
 [deploy]
 # Birinchi deploy'da "/" healthcheck qolib ketgan edi (login'ga yo'naltiradi -> 302 -> FAILED).
 # Kalitni olib tashlash eski sozlamani bekor qilmaydi, shuning uchun aniq 200 qaytaradigan
-# statik faylga o'tkazamiz.
-healthcheckPath = "/favicon.ico"
+# OmniRoute ning o'z /healthz manziliga o'tkazamiz (login talab qilmaydi, tayyor bo'lsa 200).
+healthcheckPath = "/healthz"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5
