@@ -1,0 +1,25 @@
+# Render: New -> Blueprint -> shu repo (fayl ildizda).
+services:
+  - type: web
+    name: omniroute
+    runtime: docker
+    region: frankfurt
+    plan: standard        # bepul tarifda disk yo'q; sinov uchun "free" qilib disk qismini o'chiring
+    healthCheckPath: /
+    disk:
+      name: omniroute-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: API_KEY_SECRET
+        generateValue: true
+      - key: STORAGE_ENCRYPTION_KEY
+        generateValue: true
+      - key: OMNIROUTE_WS_BRIDGE_SECRET
+        generateValue: true
+      - key: INITIAL_PASSWORD
+        sync: false
+      - key: NEXT_PUBLIC_BASE_URL
+        sync: false
