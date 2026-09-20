@@ -10,7 +10,7 @@ ENV NODE_ENV=production \
     ALLOW_API_KEY_REVEAL=false \
     APP_LOG_TO_FILE=false \
     APP_LOG_FORMAT=json \
-    CALL_LOG_RETENTION_DAYS=3
+    CALL_LOG_RETENTION_DAYS=3 \n    PORT=20128
 
-# Platforma PORT beradi (Railway/Render); bo'lmasa 20128.
+# Port aniq belgilangan — Railway/Render shu portga yo'naltiradi.
 EXPOSE 20128
